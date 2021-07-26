@@ -8,6 +8,18 @@
      * flipNHeads
      * Clock
 
+* basiclibrary
+
+  * library 
+
+     * roll 
+     * containsDuplicates
+     * calculatingAverages
+     * arrayAvg
+
+    
+        
+        
 
 
 
