@@ -3,7 +3,7 @@
  */
 package basiclibrary;
 
-import java.util.Random;
+import java.util.*;
 
 public class Library {
 
@@ -67,5 +67,57 @@ public class Library {
         }
         return test[idx];
     }
+
+    public static String Maps(int[][] arr){
+        HashSet<Integer> hs= new HashSet<Integer>();
+        int size=0;
+        int min=arr[0][0];
+        int max=arr[0][0];
+        for (int[] inner : arr) {
+            for (int i : inner) {
+                hs.add(i);
+                size++;
+                if (min>i){
+                    min=i;
+                }
+                if(i>max){
+                    max=i;
+                }
+            }
+        }
+        String result="High:"+max+" "+"Low:"+min+" ";
+
+        System.out.println("High:"+max);
+        System.out.println("Low:"+min);
+        for (int i=min;i<=max;i++){
+            if (hs.contains(i)==false){
+                result+="Never saw temperature: "+i+" ";
+                System.out.println("Never saw temperature: "+i);
+            }
+        }
+        return result;
+    }
+
+    public static String tally(List<String> testlist){
+        String name="";
+        int maxVotes=0;
+        HashMap<String, Integer> votes=new HashMap<String,Integer>();
+
+        for (String s : testlist) {
+            if(! votes.containsKey(s)){
+                votes.put(s,1);
+            }else {
+                votes.put(s,votes.get(s)+1);
+            }
+        }
+        for (Map.Entry<String,Integer> entry:votes.entrySet()){
+            if(entry.getValue()>maxVotes){
+                maxVotes=entry.getValue();
+                name=entry.getKey();
+            }
+        }
+        return name;
+    }
+
 
 }

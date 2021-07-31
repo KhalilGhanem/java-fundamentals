@@ -16,6 +16,12 @@
      * containsDuplicates
      * calculatingAverages
      * arrayAvg
+     * Maps
+     * tally 
+
+* linter
+
+    * JavaScriptLinter
 
     
         
