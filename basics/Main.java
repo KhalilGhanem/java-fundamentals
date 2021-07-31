@@ -14,7 +14,7 @@ public class Main{
 	int turtleCount = 0;
 	System.out.println("I own " + turtleCount + " " + pluralize("turtle", turtleCount) + ".");
 	
-	flipNHeads(1);
+	flipNHeads(3);
 	clock();
     }
     public static String pluralize(String s,int n) {
@@ -29,11 +29,12 @@ public class Main{
       public static void flipNHeads(int n){
         int flips=0;
         int count=0;
-        while(n !=count) {
+        while(n >count) {
             flips++;
             double rand = Math.random();
             if (rand < 0.5) {
                 System.out.println("tails");
+		count=0;    
             } else {
                 System.out.println("heads");
                 ++count;
