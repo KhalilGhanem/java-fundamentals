@@ -32,9 +32,11 @@ public class App {
             List<String> fileLines = Files.readAllLines(path);
             for(String line : fileLines){
                 count++;
-                if((!line.endsWith(";") && !( line.isEmpty() || line.endsWith("{") || line.endsWith("}") || line.contains("if ") ||line.contains("else"))) ){
+                if (!line.endsWith(";") &&  !line.isBlank() && !line.endsWith("{") && !line.endsWith("}") && !line.contains("if ") && !line.contains("else")  ){
                     System.out.println("Line "+count+": Missing semicolon.");
+                    massage+="Line "+count+": Missing semicolon.\n";
                 }
+
 
             }
         } catch (IOException e) {
@@ -44,3 +46,7 @@ public class App {
         return massage;
     }
 }
+
+// if((!line.endsWith(";") && !( line.isEmpty() || line.endsWith("{") || line.endsWith("}") || line.contains("if ") ||line.contains("else"))) ){
+//         System.out.println("Line "+count+": Missing semicolon.");
+//         }

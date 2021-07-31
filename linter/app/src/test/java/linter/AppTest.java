@@ -4,11 +4,56 @@
 package linter;
 
 import org.junit.jupiter.api.Test;
+import static linter.App.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class AppTest {
     @Test void appHasAGreeting() {
         App classUnderTest = new App();
         assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
+    }
+    //Test the linter on a file that contains no errors.
+    @Test void testLiterNoErrors(){
+        Path path= Paths.get("src/main/resources/noErrors.js");
+        assertEquals("",JavaScriptLinter(path));
+
+    }
+    //Test the linter on a file that contains one error.
+    @Test void testLiterOneError(){
+        Path path= Paths.get("src/main/resources/oneError.js");
+        assertEquals("Line "+5+": Missing semicolon.\n",JavaScriptLinter(path));
+    }
+    //Test the linter on a file that contains few errors.
+    @Test void  testLiterFewErrors(){
+        Path path= Paths.get("src/main/resources/FewErrors.js");
+        String expectedTest="Line "+3+": Missing semicolon.\n" +
+                "Line "+5+": Missing semicolon.\n"+
+                "Line "+11+": Missing semicolon.\n"+
+                "Line "+13+": Missing semicolon.\n"+
+                "Line "+15+": Missing semicolon.\n";
+        assertEquals(expectedTest,JavaScriptLinter(path));
+    }
+    //Test the linter on a file that contains many errors.
+    @Test void testLiterManyErrors(){
+        Path path= Paths.get("src/main/resources/ManyErrors.js");
+        String expectedTest="Line "+3+": Missing semicolon.\n" +
+                "Line "+5+": Missing semicolon.\n"+
+                "Line "+11+": Missing semicolon.\n"+
+                "Line "+13+": Missing semicolon.\n"+
+                "Line "+15+": Missing semicolon.\n"+
+                "Line "+26+": Missing semicolon.\n"+
+                "Line "+28+": Missing semicolon.\n"+
+                "Line "+32+": Missing semicolon.\n";
+        assertEquals(expectedTest,JavaScriptLinter(path));
+    }
+    //Test the linter on an empty file
+    @Test void testLiterEmpty(){
+        Path path= Paths.get("src/main/resources/Empty.js");
+        assertEquals("",JavaScriptLinter(path));
     }
 }
