@@ -23,10 +23,22 @@
 
     * JavaScriptLinter
 
-    
-        
-        
+* inheritance
+  
+    * Restaurant 
 
+        * addReview
+        * set & get Name
+        * set & get Stars
+        * set & get Price
+        * toString
+
+    * Review
+
+        * set & get Author
+        * set & get Body
+        * set & get Stars
+        * toString 
 
 
 ### resources: 
