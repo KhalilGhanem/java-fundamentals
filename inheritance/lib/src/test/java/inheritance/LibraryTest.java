@@ -63,4 +63,33 @@ class LibraryTest {
      assertEquals(3.5,rest.stars);
 
     }
+    @Test void testShop(){
+        Shop kareem=new Shop("Kareem","Very Good",400);
+        assertEquals("Shop{name='Kareem', description='Very Good', singsNumber='$$$$', reviewAverage='0.0', reviews=[]}",kareem.toString());
+    }
+    @Test void tesShopReview(){
+        Shop kareem=new Shop("Kareem","Very Good",400);
+        Review rev3=new Review("Khalil");
+        rev3.setBody("good one");
+        rev3.setStars(4);
+        kareem.addReview(rev3);
+        assertEquals("Shop{name='Kareem', description='Very Good', singsNumber='$$$$', reviewAverage='4.0', reviews=[Review{body='good one', author='Khalil', stars=4.0}]}",kareem.toString());
+    }
+    @Test void testTheater (){
+        Theater prime=new Theater("Prime");
+        prime.addMovie("Rush Hour");
+        prime.addMovie("BatMan");
+        assertEquals("Theater{name='Prime', movies=[Rush Hour, BatMan], reviews=[], TheaterRate=0.0}",prime.toString());
+    }
+    @Test void testTheaterReview(){
+        Theater prime=new Theater("Prime");
+        prime.addMovie("Rush Hour");
+        prime.addMovie("BatMan");
+        Review rev5=new Review("Ryan","bad",2,"BatMan");
+        Review rev6=new Review("khalil","very good",4,"Rush Hour");
+        prime.addReview(rev5);
+        prime.addReview(rev6);
+        assertEquals("Theater{name='Prime', movies=[Rush Hour, BatMan], reviews=[Review{body='bad', author='Ryan', stars=2.0}, Review{body='very good', author='khalil', stars=4.0}], TheaterRate=3.0}",prime.toString());
+    }
+
 }

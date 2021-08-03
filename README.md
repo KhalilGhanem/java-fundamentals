@@ -40,6 +40,13 @@
         * set & get Stars
         * toString 
 
+    * Theater
+
+      * addMovie
+      * removeMovie
+      * addReview
+          
+
 
 ### resources: 
 
