@@ -16,10 +16,17 @@ public class Restaurant {
     }
 
     public Review addReview(Review newReview){
-        reviewscount+=1;
-        this.reviews.add(newReview);
-        this.stars=(this.stars+newReview.getStars())/reviewscount;
-        return newReview;
+        if (reviewscount==0) {
+            reviewscount = 1;
+            this.reviews.add(newReview);
+            this.stars = (this.stars + newReview.getStars()) / reviewscount;
+            return newReview;
+        }else {
+            reviewscount += 1;
+            this.reviews.add(newReview);
+            this.stars = (this.stars + newReview.getStars()) / reviewscount;
+            return newReview;
+        }
     }
 
     public void setReviews(List<Review> reviews) {
